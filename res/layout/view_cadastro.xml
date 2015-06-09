@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo:" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rbcd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="CD" />
+
+        <RadioButton
+            android:id="@+id/rbdvd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DVD" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição:" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/rbdocumentos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Documentos" />
+
+        <RadioButton
+            android:id="@+id/rbimagens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Imagens" />
+
+        <RadioButton
+            android:id="@+id/rbmisto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Misto" />
+        
+        <RadioButton
+            android:id="@+id/rbmusicas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Músicas" />
+
+        <RadioButton
+            android:id="@+id/rbprogramas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Programas" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edconteudo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Conteúdo do cd/dvd" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/btsalvar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salvar" />
+
+        <Button
+            android:id="@+id/btcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar" />
+
+    </LinearLayout>
+
+</LinearLayout>
