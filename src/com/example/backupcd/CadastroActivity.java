@@ -10,69 +10,84 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class CadastroActivity extends Activity implements OnClickListener{
+public class CadastroActivity extends Activity{
 
-	RadioButton rbcd, rbdvd,rbdocumentos,rbimagens,rbmisto,rbmusicas,rbprogramas;
+	RadioButton rbcd, rbdvd;
 	Spinner spdescricao;
 	EditText edconteudo;
-	Button btsalvar, btcancel;
-	
+	ImageButton imgsalvar, imgcancel;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_cadastro);
-				
-		rbcd  = (RadioButton) findViewById(R.id.rbcd);
+
+		rbcd = (RadioButton) findViewById(R.id.rbcd);
 		rbdvd = (RadioButton) findViewById(R.id.rbdvd);
-		/* descricao*/
-		rbdocumentos  = (RadioButton) findViewById(R.id.rbdocumentos);
-		rbimagens = (RadioButton) findViewById(R.id.rbimagens);
-		rbmisto  = (RadioButton) findViewById(R.id.rbmisto);
-		rbmusicas = (RadioButton) findViewById(R.id.rbmusicas);
-		rbprogramas  = (RadioButton) findViewById(R.id.rbprogramas);
 		
+		spdescricao = (Spinner) findViewById(R.id.spdescricao);
+		
+		popula_spinner();
+
 		edconteudo = (EditText) findViewById(R.id.edconteudo);
-		btsalvar = (Button) findViewById(R.id.btsalvar);
-		btcancel = (Button) findViewById(R.id.btcancel);
+		imgsalvar = (ImageButton) findViewById(R.id.imgsalvar);
+		imgcancel = (ImageButton) findViewById(R.id.imgcancel);
+
+		salvar_midia();
+		cancelar();
 		
-		btsalvar.setOnClickListener(this);
-		btcancel.setOnClickListener(new OnClickListener() {
-			
+	}
+
+	private void popula_spinner() {
+		ArrayList<String> descricoes = new ArrayList<String>();
+		descricoes.add("Documentos");
+		descricoes.add("Imagens");
+		descricoes.add("Misto");
+		descricoes.add("Músicas");
+		descricoes.add("Programas");
+		
+		ArrayAdapter<String> adp = new ArrayAdapter<String>(CadastroActivity.this, 
+				android.R.layout.simple_spinner_dropdown_item, 
+				descricoes);
+		spdescricao.setAdapter(adp);
+		
+	}
+
+	private void cancelar() {
+		imgcancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
 			}
 		});
 	}
-	
 
-	/**
-	 * Cadastrando uma midia no banco de dados
-	 */
-	@Override
-	public void onClick(View v) {
-		Midia midia = new Midia();
-		if(rbcd.isChecked())
-			midia.setTipo(rbcd.getText().toString());
+	private void salvar_midia() {
+		imgsalvar.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Midia midia = new Midia();
+				if (rbcd.isChecked())
+					midia.setTipo(rbcd.getText().toString());
+				if (rbdvd.isChecked())
+					midia.setTipo(rbdvd.getText().toString());				
 		
-		if(rbdvd.isChecked())
-			midia.setTipo(rbdvd.getText().toString());
-		
-		if(rbdocumentos.isChecked()) midia.setDescricao(rbdocumentos.getText().toString());	
-		if(rbimagens.isChecked()) midia.setDescricao(rbimagens.getText().toString());
-		if(rbmisto.isChecked()) midia.setDescricao(rbmisto.getText().toString());		
-		if(rbmusicas.isChecked()) midia.setDescricao(rbmusicas.getText().toString());
-		if(rbprogramas.isChecked()) midia.setDescricao(rbprogramas.getText().toString());
-		
-		midia.setConteudo(edconteudo.getText().toString());
-		
-		DBhelper dbh = new DBhelper(this);
-		dbh.inserirMidia(midia);
-		
-		finish();
+				midia.setDescricao(spdescricao.getSelectedItem().toString());
+				midia.setConteudo(edconteudo.getText().toString());
+
+				DBhelper dbh = new DBhelper(CadastroActivity.this);
+				dbh.inserirMidia(midia);
+				Toast.makeText(CadastroActivity.this, "Mídia salva com sucesso", Toast.LENGTH_SHORT).show();
+				finish();
+
+			}
+		});
 	}
 }

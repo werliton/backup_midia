@@ -2,27 +2,23 @@ package com.example.backupcd;
 
 import java.util.List;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.*;
-import android.view.View.OnClickListener;
 import android.widget.*;
 
-@SuppressWarnings("deprecation")
+
 public class MainActivity extends ActionBarActivity{
-	Button btabrecadastro;
 	ListView lvExibeTodosCdscadastrados;
+	ImageButton imgabrecadastro;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		btabrecadastro = (Button) findViewById(R.id.btabrecadastro);
+		imgabrecadastro = (ImageButton) findViewById(R.id.imgabrecadastro);
 		lvExibeTodosCdscadastrados = (ListView) findViewById(R.id.lvExibeTodosCdscadastrados);
 		
 		abre_cadastro();		
@@ -40,7 +36,7 @@ public class MainActivity extends ActionBarActivity{
 				String anome_selecionado[] = nome_selecionado.split("-");
 				int idmidia = Integer.parseInt(anome_selecionado[0]);
 				
-				Intent it = new Intent(MainActivity.this, DetalheActivity.class);
+				Intent it = new Intent(MainActivity.this, DetalheMidiaActivity.class);
 				it.putExtra("id", idmidia);
 				startActivity(it);				
 			}
@@ -49,7 +45,7 @@ public class MainActivity extends ActionBarActivity{
 	}
 
 	private void abre_cadastro() {
-		btabrecadastro.setOnClickListener(new View.OnClickListener() {			
+		imgabrecadastro.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View v) {
 				Intent it = new Intent(MainActivity.this, CadastroActivity.class);
@@ -70,5 +66,10 @@ public class MainActivity extends ActionBarActivity{
 		lvExibeTodosCdscadastrados.setAdapter(adp);
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu); return true;
+	}
+	
 	
 }

@@ -4,9 +4,19 @@
     tools:context="com.example.backupcd.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/mnCadastro"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Cadastro"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/mnSobre"
+        android:orderInCategory="100"
+        android:title="Sobre o app"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/mnSair"
+        android:orderInCategory="100"
+        android:title="Sair"
         app:showAsAction="never"/>
 
 </menu>

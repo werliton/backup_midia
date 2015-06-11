@@ -83,10 +83,13 @@ public class DBhelper extends SQLiteOpenHelper{
 		return listamidia;
 	}
 	
+
 	/**
-	 * retorna um elemento especifico
+	 * 
+	 * @param id é o identificador da midia
+	 * @return Um objeto Midia especifica
 	 */
-	public Midia listaumamidia(int id) {
+	public Midia listaUmaMidia(int id) {
 		SQLiteDatabase db = getReadableDatabase();
 		
 		Midia midia = new Midia();
@@ -100,5 +103,18 @@ public class DBhelper extends SQLiteOpenHelper{
 		}
 		
 		return midia;
+	}
+
+	public void deletaMidia(int id) {
+		SQLiteDatabase db = getReadableDatabase();
+		db.delete(TABLE_NAME, "id="+id, null);
+	}
+
+	public void atualizaMidia(Midia midia){
+		SQLiteDatabase db = getWritableDatabase();
+		ContentValues cv = new ContentValues();
+		cv.put("conteudo", midia.getConteudo());
+		db.update(TABLE_NAME, cv, "id="+midia.getId(), null);
+		db.close();
 	}
 }

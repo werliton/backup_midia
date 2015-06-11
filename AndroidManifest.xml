@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name="CadastroActivity"></activity>
-        <activity android:name="DetalheActivity"></activity>
+        <activity android:name="DetalheMidiaActivity"></activity>
+        <activity android:name="EditaMidiaActivity"></activity>
     </application>
 
 </manifest>

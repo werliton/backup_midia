@@ -73,7 +73,7 @@ public class DetalheMidiaActivity extends Activity{
 				
 				DBhelper db = new DBhelper(DetalheMidiaActivity.this);
 				db.deletaMidia(idMidia);
-				Toast.makeText(DetalheMidiaActivity.this, "Midia deletada com sucesso", Toast.LENGTH_SHORT);
+				Toast.makeText(DetalheMidiaActivity.this, "Midia deletada com sucesso", Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		});

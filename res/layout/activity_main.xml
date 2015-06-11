@@ -17,11 +17,11 @@
         android:text="CDs cadastrados"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btabrecadastro"
+    <ImageButton
+        android:id="@+id/imgabrecadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+" />
+        android:src="@android:drawable/ic_menu_add" />
 
     <ListView
         android:id="@+id/lvExibeTodosCdscadastrados"

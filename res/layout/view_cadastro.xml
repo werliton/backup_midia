@@ -2,102 +2,91 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="15dp" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tipo:" />
+        android:gravity="center"
+        android:paddingBottom="25dp"
+        android:paddingTop="15dp" >
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/rbcd"
+        <ImageButton
+            android:id="@+id/imgsalvar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="CD" />
+            android:padding="15dp"
+            android:src="@android:drawable/ic_menu_save" />
 
-        <RadioButton
-            android:id="@+id/rbdvd"
+        <ImageButton
+            android:id="@+id/imgcancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DVD" />
-    </RadioGroup>
+            android:padding="15dp"
+            android:src="@android:drawable/ic_menu_revert" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:text="Tipo:"
+            android:textSize="16dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rbdvd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DVD" />
+
+            <RadioButton
+                android:id="@+id/rbcd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="CD" />
+        </RadioGroup>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Descrição:" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <RadioButton
-            android:id="@+id/rbdocumentos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Documentos" />
-
-        <RadioButton
-            android:id="@+id/rbimagens"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Imagens" />
-
-        <RadioButton
-            android:id="@+id/rbmisto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Misto" />
-        
-        <RadioButton
-            android:id="@+id/rbmusicas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Músicas" />
-
-        <RadioButton
-            android:id="@+id/rbprogramas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Programas" />
-    </RadioGroup>
+        android:paddingBottom="5dp"
+        android:paddingTop="10dp"
+        android:text="Descrição:"
+        android:textSize="16dp" />
+  
+    <Spinner
+        android:id="@+id/spdescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp" />
 
     <EditText
         android:id="@+id/edconteudo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Conteúdo do cd/dvd"
         android:inputType="textMultiLine"
-        android:hint="Conteúdo do cd/dvd" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" >
-
-        <Button
-            android:id="@+id/btsalvar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Salvar" />
-
-        <Button
-            android:id="@+id/btcancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancelar" />
-
-    </LinearLayout>
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp" />
 
 </LinearLayout>

@@ -21,14 +21,22 @@ public class EditaMidiaActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_editamidia);
-		int idMidia = getIntent().getIntExtra("id", 0);
+		
 		
 		lerDados();
 		
-		//Toast.makeText(this, "Teste agora do intent", Toast.LENGTH_LONG);
-		preencheCampos(idMidia);
-		//salvaDados();
+		
+		salvaDados();
 		cancelar();
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		int idMidia = getIntent().getIntExtra("id", 0);
+		
+		preencheCampos(idMidia);
 	}
 
 	private void preencheCampos(int idMidia) {
@@ -65,6 +73,8 @@ public class EditaMidiaActivity extends Activity{
 				
 				DBhelper db = new DBhelper(EditaMidiaActivity.this);
 				db.atualizaMidia(midia);
+				Toast.makeText(EditaMidiaActivity.this, "Midia atualizada", Toast.LENGTH_LONG).show();
+				finish();
 			}
 		});		
 		
@@ -72,8 +82,8 @@ public class EditaMidiaActivity extends Activity{
 
 	private void lerDados() {
 		txtnumero = (TextView) findViewById(R.id.txtnumero);
-		txttipo = (TextView) findViewById(R.id.txtTipo);
-		txtdescricao = (TextView) findViewById(R.id.txtDescricao);
+		txttipo = (TextView) findViewById(R.id.txttipo);
+		txtdescricao = (TextView) findViewById(R.id.txtdescricao);
 		
 		edconteudo = (EditText) findViewById(R.id.edconteudo);
 		btsalvar = (Button) findViewById(R.id.btsalvar);
