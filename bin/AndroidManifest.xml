@@ -25,6 +25,7 @@
         <activity android:name="CadastroActivity"></activity>
         <activity android:name="DetalheMidiaActivity"></activity>
         <activity android:name="EditaMidiaActivity"></activity>
+        <activity android:name="PesquisaMidiaActivity"></activity>
     </application>
 
 </manifest>

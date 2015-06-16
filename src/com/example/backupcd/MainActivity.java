@@ -11,17 +11,14 @@ import android.widget.*;
 
 public class MainActivity extends ActionBarActivity{
 	ListView lvExibeTodosCdscadastrados;
-	ImageButton imgabrecadastro;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		imgabrecadastro = (ImageButton) findViewById(R.id.imgabrecadastro);
 		lvExibeTodosCdscadastrados = (ListView) findViewById(R.id.lvExibeTodosCdscadastrados);
 		
-		abre_cadastro();		
 		abre_detalhe_damidia();
 		
 	}
@@ -45,13 +42,8 @@ public class MainActivity extends ActionBarActivity{
 	}
 
 	private void abre_cadastro() {
-		imgabrecadastro.setOnClickListener(new View.OnClickListener() {			
-			@Override
-			public void onClick(View v) {
-				Intent it = new Intent(MainActivity.this, CadastroActivity.class);
-				startActivity(it);
-			}
-		});
+		Intent it = new Intent(MainActivity.this, CadastroActivity.class);
+		startActivity(it);
 	}
 
 	@Override
@@ -69,6 +61,19 @@ public class MainActivity extends ActionBarActivity{
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu); return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		if (item.getItemId() == R.activity_principal.mnCadastro) {
+			abre_cadastro();
+		}
+		
+		if (item.getItemId() == R.activity_principal.mnSair) {
+			finish();
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	

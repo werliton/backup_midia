@@ -4,19 +4,29 @@
     tools:context="com.example.backupcd.MainActivity" >
 
     <item
-        android:id="@+id/mnCadastro"
+        android:id="@+activity_principal/mnCadastro"
         android:orderInCategory="100"
-        android:title="Cadastro"
-        app:showAsAction="never"/>
+        android:title="@string/mnCadastro"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_input_add"
+        />
+    
     <item
-        android:id="@+id/mnSobre"
+        android:id="@+activity_principal/mnPesquisa"
         android:orderInCategory="100"
-        android:title="Sobre o app"
-        app:showAsAction="never"/>
+        android:title="@string/mnPesquisa"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_search"
+        />
     <item
-        android:id="@+id/mnSair"
+        android:id="@+activity_principal/mnSobre"
         android:orderInCategory="100"
-        android:title="Sair"
-        app:showAsAction="never"/>
+        android:title="@string/mnSobre"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+activity_principal/mnSair"
+        android:orderInCategory="100"
+        android:title="@string/mnSair"
+        app:showAsAction="ifRoom"/>
 
 </menu>

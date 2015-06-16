@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BackupCD</string>
+    <string name="app_name">Backup de Mídia</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    
+    <!-- MENU DA TELA PRINCIPAL -->
+	<string name="mnTitulo">Mídias Cadastradas</string>
+	<string name="mnCadastro">Cadastrar mídia</string>
+	<string name="mnPesquisa">Pesquisar</string>
+	<string name="mnSobre">Sobre</string>
+	<string name="mnSair">Sair</string>
+	
+	<!-- MENU DA TELA CADASTRO -->
+	<string name="mnSalvar">Salvar</string>
+	
+	<string name="lbtipo">Tipo:</string>
+	<string name="lbdescricao">Descrição:</string>		
+	<string name="lbrbdvd">DVD:</string>
+	<string name="lbrbcd">CD:</string>
+	
+	<!-- MENU DA TELA DE DETALHE -->
+	<string name="mnEditar">Editar</string>
+	<string name="mnExcluir">Excluir</string>
+	<string name="mnVoltar">Voltar</string>
+	
+	<string name="d_lbnummidia">Número da Mídia:</string>
+	<string name="d_lbtipo">Tipo:</string>
+	<string name="d_lbdescricao">Descrição:</string>		
+	<string name="d_lbconteudo">Conteúdo:</string>
+	
+	<!-- MENU DA TELA DE PESQUISA -->
+	
+	<string name="pTitulo">Mídias Encontradas:</string>
+	
+	
+	
 </resources>
