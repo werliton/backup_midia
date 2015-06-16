@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -26,14 +27,14 @@ public class CadastroActivity extends ActionBarActivity {
 	EditText edconteudo;
 	ImageButton imgsalvar, imgcancel;
 
-	
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_cadastro);
 
-		//getActionBar().setDisplayHomeAsUpEnabled(true);
-		
+		android.support.v7.app.ActionBar actionbar = getSupportActionBar();
+		actionbar.setDisplayHomeAsUpEnabled(true);
+
 		rbcd = (RadioButton) findViewById(R.id.rbcd);
 		rbdvd = (RadioButton) findViewById(R.id.rbdvd);
 
@@ -61,8 +62,7 @@ public class CadastroActivity extends ActionBarActivity {
 	}
 
 	private void cancelar() {
-		
-				finish();
+		finish();
 	}
 
 	private void salvar_midia() {
@@ -95,7 +95,7 @@ public class CadastroActivity extends ActionBarActivity {
 		if (item.getItemId() == R.activity_cadastro.mnSalvar) {
 			salvar_midia();
 		}
-		if (item.getItemId() == R.activity_cadastro.mnCancelar) {
+		if (item.getItemId() == android.R.id.home) {
 			cancelar();
 		}
 

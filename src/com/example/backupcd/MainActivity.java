@@ -2,9 +2,12 @@ package com.example.backupcd;
 
 import java.util.List;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.view.*;
 import android.widget.*;
 
@@ -60,8 +63,20 @@ public class MainActivity extends ActionBarActivity{
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu); return true;
+		getMenuInflater().inflate(R.menu.main, menu); 
+		//  Pega o componente
+		SearchManager smananger = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		
+		//SearchView sv = (SearchView) menu.findItem(R.id.search).getActionView();
+		// Insere um texto de ajuda
+		//sv.setQueryHint("Pesquise");
+		
+		// Exemplo da utilização
+		//sv.setOnQueryTextListener();
+		
+		return true;
 	}
+	
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

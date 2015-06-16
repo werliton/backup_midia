@@ -17,8 +17,8 @@
 	
 	<string name="lbtipo">Tipo:</string>
 	<string name="lbdescricao">Descrição:</string>		
-	<string name="lbrbdvd">DVD:</string>
-	<string name="lbrbcd">CD:</string>
+	<string name="lbrbdvd">DVD</string>
+	<string name="lbrbcd">CD</string>
 	
 	<!-- MENU DA TELA DE DETALHE -->
 	<string name="mnEditar">Editar</string>

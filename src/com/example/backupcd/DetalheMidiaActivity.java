@@ -23,6 +23,9 @@ public class DetalheMidiaActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_detalhamidia);
+		android.support.v7.app.ActionBar actionbar = getSupportActionBar();
+		actionbar.setDisplayHomeAsUpEnabled(true);
+		
 
 		lerDados();
 		preencheCampos();
@@ -62,7 +65,7 @@ public class DetalheMidiaActivity extends ActionBarActivity {
 		int idMidia = getIntent().getIntExtra("id", 0);
 
 		DBhelper dbh = new DBhelper(DetalheMidiaActivity.this);
-		Midia md = dbh.listaUmaMidia(idMidia);
+		Midia md = dbh.listaMidiaById(idMidia);
 
 		txtNumMidia.setText(String.valueOf(md.getId()));
 		txtTipo.setText(md.getTipo());
@@ -84,7 +87,7 @@ public class DetalheMidiaActivity extends ActionBarActivity {
 		if (item.getItemId() == R.activity_detalhe.mnExcluir) {
 			deletaMidia();
 		}
-		if (item.getItemId() == R.activity_detalhe.mnVoltar) {
+		if (item.getItemId() == android.R.id.home) {
 			finish();
 		}
 		return super.onOptionsItemSelected(item);

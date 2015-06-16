@@ -12,12 +12,12 @@
         />
     
     <item
-        android:id="@+activity_principal/mnPesquisa"
-        android:orderInCategory="100"
-        android:title="@string/mnPesquisa"
-        app:showAsAction="ifRoom"
+        android:id="@+id/search"
         android:icon="@android:drawable/ic_menu_search"
-        />
+        android:title="@string/mnPesquisa"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom"/>
+    
     <item
         android:id="@+activity_principal/mnSobre"
         android:orderInCategory="100"

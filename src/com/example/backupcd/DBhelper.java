@@ -89,7 +89,7 @@ public class DBhelper extends SQLiteOpenHelper{
 	 * @param id é o identificador da midia
 	 * @return Um objeto Midia especifica
 	 */
-	public Midia listaUmaMidia(int id) {
+	public Midia listaMidiaById(int id) {
 		SQLiteDatabase db = getReadableDatabase();
 		
 		Midia midia = new Midia();
@@ -116,5 +116,25 @@ public class DBhelper extends SQLiteOpenHelper{
 		cv.put("conteudo", midia.getConteudo());
 		db.update(TABLE_NAME, cv, "id="+midia.getId(), null);
 		db.close();
+	}
+
+	public List<Midia> pesquisaMidiaByInputText(String conteudo) {
+		SQLiteDatabase db = getReadableDatabase();
+		String sql = " SELECT id, descricao FROM "+TABLE_NAME+" WHERE conteudo LIKE % "+conteudo+" %";
+		Cursor c = db.rawQuery(sql, null);
+		
+		List<Midia> listaMidia = new ArrayList<Midia>();
+		
+		if(c.moveToFirst()){
+			do {
+				Midia midia = new Midia();
+				midia.setId(c.getInt(0));
+				midia.setDescricao(c.getString(1));
+				
+				listaMidia.add(midia);
+			} while (c.moveToNext());
+		}
+		
+		return listaMidia;
 	}
 }

@@ -24,6 +24,10 @@ public class EditaMidiaActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_editamidia);
+		// Habilita o botão de voltar para home
+		android.support.v7.app.ActionBar actionbar = getSupportActionBar();
+		actionbar.setDisplayHomeAsUpEnabled(true);
+		
 		lerDados();
 	}
 
@@ -37,7 +41,7 @@ public class EditaMidiaActivity extends ActionBarActivity {
 	private void preencheCampos(int idMidia) {
 
 		DBhelper dbh = new DBhelper(EditaMidiaActivity.this);
-		Midia md = dbh.listaUmaMidia(idMidia);
+		Midia md = dbh.listaMidiaById(idMidia);
 
 		txtnumero.setText(String.valueOf(md.getId()));
 		txttipo.setText(md.getTipo());
@@ -83,7 +87,7 @@ public class EditaMidiaActivity extends ActionBarActivity {
 		if (item.getItemId() == R.activity_edit.mnSalvar) {
 			salvaDados();
 		}
-		if (item.getItemId() == R.activity_edit.mnCancelar) {
+		if (item.getItemId() == android.R.id.home) {
 			cancelar();
 		}
 		
