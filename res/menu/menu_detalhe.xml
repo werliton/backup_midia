@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.backupcd.DetalheMidiaActivity" >
+    
+    <item
+        android:id="@+activity_detalhe/mnEditar"
+        android:orderInCategory="100"
+        android:title="@string/mnEditar"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="ifRoom"/>
+    
+    <item
+        android:id="@+activity_detalhe/mnExcluir"
+        android:orderInCategory="100"
+        android:title="@string/mnExcluir"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="ifRoom"/>
+    
+</menu>
