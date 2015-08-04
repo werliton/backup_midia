@@ -1,26 +1,19 @@
 package com.example.backupcd;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class CadastroActivity extends ActionBarActivity {
+public class CadastroActivity extends AppCompatActivity {
 
 	RadioButton rbcd, rbdvd;
 	Spinner spdescricao;

@@ -2,10 +2,14 @@ package com.example.backupcd;
 
 public class Midia {
 	
+	//public static String[] colunas = new String[]{Midias.};
 	private int id;
 	private String tipo;
 	private String descricao;
 	private String conteudo;
+	
+	
+	public Midia() {}
 	
 	
 	public int getId() {
@@ -34,7 +38,7 @@ public class Midia {
 	}
 	@Override
 	public String toString() {
-		return id + "- " + descricao;
+		return id + "- " + descricao + " - "+conteudo;
 	}
 	
 	

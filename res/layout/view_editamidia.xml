@@ -30,11 +30,25 @@
             android:text="@string/lbtipo"
             style="@style/label" />
 
-        <TextView
-            android:id="@+id/txttipo"
+        <RadioGroup
+            android:id="@+id/radioGroup1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/atributo" />
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rbdvd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbrbdvd" />
+
+            <RadioButton
+                android:id="@+id/rbcd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/lbrbcd" />
+        </RadioGroup>
 
         <TextView
             android:id="@+id/textView5"
@@ -42,12 +56,17 @@
             android:layout_height="wrap_content"
             android:text="@string/lbdescricao"
             style="@style/label" />
-
-        <TextView
+	  <TextView
             android:id="@+id/txtdescricao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/atributo" />
+	  
+        <Spinner
+            android:id="@+id/spdescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp" />
 
         <TextView
             android:id="@+id/textView7"
@@ -58,11 +77,12 @@
 
         <EditText
             android:id="@+id/edconteudo"
+            style="@style/atributo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="92dp"
             android:ems="10"
-            android:inputType="textMultiLine"
-            style="@style/atributo" />
+            android:inputType="textMultiLine" />
+
     </LinearLayout>
 
 </LinearLayout>

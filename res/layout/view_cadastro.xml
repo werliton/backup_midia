@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <LinearLayout        
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:background="#FFFFFF"
@@ -54,11 +54,11 @@
 
         <EditText
             android:id="@+id/edconteudo"
+            style="@style/edittext"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Conteúdo do cd/dvd"
-            android:inputType="textMultiLine"
-            style="@style/edittext" />
+            android:layout_height="206dp"
+            android:hint="Digite aqui o conteúdo do cd/dvd"
+            android:inputType="textMultiLine" />
         
     </LinearLayout>
 

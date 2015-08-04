@@ -1,20 +1,17 @@
 package com.example.backupcd;
 
-import java.util.ArrayList;
-
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DetalheMidiaActivity extends ActionBarActivity {
+public class DetalheMidiaActivity extends AppCompatActivity {
 
 	Button btvoltar, btdelete, btupdate;
 	TextView txtNumMidia, txtTipo, txtDescricao, txtConteudo;
@@ -23,12 +20,17 @@ public class DetalheMidiaActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_detalhamidia);
-		android.support.v7.app.ActionBar actionbar = getSupportActionBar();
-		actionbar.setDisplayHomeAsUpEnabled(true);
 		
+		android.support.v7.app.ActionBar actionbar = getSupportActionBar();
+		actionbar.setDisplayHomeAsUpEnabled(true);		
 
 		lerDados();
+	}
+	
+	@Override
+	protected void onResume() {
 		preencheCampos();
+		super.onResume();
 	}
 
 	private void lerDados() {
@@ -85,7 +87,24 @@ public class DetalheMidiaActivity extends ActionBarActivity {
 			editaMidia();
 		}
 		if (item.getItemId() == R.activity_detalhe.mnExcluir) {
-			deletaMidia();
+			AlertDialog.Builder alert = new AlertDialog.Builder(DetalheMidiaActivity.this);
+			alert.setIcon(android.R.drawable.ic_dialog_alert);
+			alert.setTitle("Deletando uma mídia");
+			alert.setMessage("Deseja realmente deletar esta mídia?");
+			
+			// Caso seja escolhida a opção SIM
+			alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					deletaMidia();					
+				}
+			});
+			
+			// Caso escolha nao
+			alert.setNegativeButton("Não", null);
+			
+			alert.show();
 		}
 		if (item.getItemId() == android.R.id.home) {
 			finish();

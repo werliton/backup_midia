@@ -7,7 +7,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBhelper extends SQLiteOpenHelper{
@@ -41,24 +40,77 @@ public class DBhelper extends SQLiteOpenHelper{
 		onCreate(db);
 	}
 
+	
+	// Salvar a mídia, insere uma nova ou atualiza
+	public long salvar(Midia midia){
+		long id = midia.getId();
+		
+		if (id != 0) {
+			atualizaMidia(midia);
+		}else{
+			id = inserirMidia(midia);
+		}
+		
+		return id;
+	}
 	/**
-	 * Insere uma midia no banco de dados
+	 * Insere uma nova midia no banco de dados
 	 * @param midia
 	 */
-	public void inserirMidia(Midia midia) {
-		SQLiteDatabase db = getWritableDatabase();
-		
+	public long inserirMidia(Midia midia) {		
 		ContentValues midiavalor = new ContentValues();
 		midiavalor.put("tipo", midia.getTipo());
 		midiavalor.put("descricao", midia.getDescricao());
 		midiavalor.put("conteudo", midia.getConteudo());
-		
-		db.insert(TABLE_NAME, null, midiavalor);
+		long id = inserir(midiavalor);
+		return id;
+	}
+	//Insere uma nova mídia
+	public long inserir(ContentValues valores) {
+		SQLiteDatabase db = getWritableDatabase();		
+		long id = db.insert(TABLE_NAME, null, valores);
 		db.close();
+		return id;
 	}
 	/**
-	 * Retorna todas as midias cadastradas
-	 * @return
+	 *  Atualiza dados da midia no banco
+	 *  Parâmetros uma Midia
+	 *  @Return retorna o numero de linhas afetadas
+	 **/
+	public int atualizaMidia(Midia midia){
+		ContentValues cv = new ContentValues();
+		cv.put("conteudo", midia.getConteudo());
+		cv.put("tipo", midia.getTipo());
+		cv.put("descricao", midia.getDescricao());
+		
+		String id = String.valueOf(midia.getId());
+		String where = "id"+" =?";
+		String[] whereArgs = new String[] {id};
+		
+		return atualizar(cv,where,whereArgs);
+	}
+	
+	public int atualizar(ContentValues valores, String where, String[] whereArgs){
+		SQLiteDatabase db = getWritableDatabase();
+		int count = db.update(TABLE_NAME, valores, where, whereArgs);
+		db.close();
+		
+		return count;
+	}
+	/**
+	 * Deleta uma midia no banco de dados
+	 * @param id
+	 * @return retorna a quantidade de dados deletados
+	 */
+	public int deletaMidia(int id) {
+		SQLiteDatabase db = getReadableDatabase();
+		int count = db.delete(TABLE_NAME, "id="+id, null);
+		return count;
+	}
+	
+	/**
+	 * 
+	 * @return retorna uma lista com todas as midias cadastradas
 	 */
 	public List<Midia> listatodasasmidias() {
 		SQLiteDatabase db = getReadableDatabase();
@@ -92,32 +144,26 @@ public class DBhelper extends SQLiteOpenHelper{
 	public Midia listaMidiaById(int id) {
 		SQLiteDatabase db = getReadableDatabase();
 		
-		Midia midia = new Midia();
 		Cursor c = db.rawQuery(" SELECT * FROM "+TABLE_NAME+" WHERE id="+id, null);
 		
 		if (c.moveToFirst()) {
+			Midia midia = new Midia();			
 			midia.setId(c.getInt(0));
 			midia.setTipo(c.getString(1));
 			midia.setDescricao(c.getString(2));
 			midia.setConteudo(c.getString(3));
+			
+			return midia;			
 		}
 		
-		return midia;
+		return null;
 	}
 
-	public void deletaMidia(int id) {
-		SQLiteDatabase db = getReadableDatabase();
-		db.delete(TABLE_NAME, "id="+id, null);
-	}
-
-	public void atualizaMidia(Midia midia){
-		SQLiteDatabase db = getWritableDatabase();
-		ContentValues cv = new ContentValues();
-		cv.put("conteudo", midia.getConteudo());
-		db.update(TABLE_NAME, cv, "id="+midia.getId(), null);
-		db.close();
-	}
-
+	/**
+	 * Pesquisa mídias pelo seu conteúdo
+	 * @param conteudo
+	 * @return retorna uma lista de mídias
+	 */
 	public List<Midia> pesquisaMidiaByInputText(String conteudo) {
 		SQLiteDatabase db = getReadableDatabase();
 		String sql = " SELECT id, descricao FROM "+TABLE_NAME+" WHERE conteudo LIKE % "+conteudo+" %";

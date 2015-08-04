@@ -12,6 +12,16 @@
     style="@style/fundo_app"
      >
 
+    <EditText 
+        android:id="@+id/edPesquisaMidia"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/edittextbusca"
+        android:hint="Digite um conteúdo...">
+        
+        <requestFocus />
+    </EditText>
+    
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
